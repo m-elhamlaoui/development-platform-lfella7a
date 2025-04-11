@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=lostcity
+      - DB_USER=lostcity
+      - DB_PASSWORD=lostcity
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+      - /app/target
+    networks:
+      - lostcity-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - lostcity-network
+
+  ml_ai:
+    build: ./ml_ai
+    ports:
+      - "5000:5000"
+    environment:
+      - DEBUG=true
+    volumes:
+      - ./ml_ai:/app
+    networks:
+      - lostcity-network
+    depends_on:
+      - backend
+
+  gis_tools:
+    build: ./gis_tools
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./gis_tools:/app
+      - /app/node_modules
+    networks:
+      - lostcity-network
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=lostcity
+      - POSTGRES_USER=lostcity
+      - POSTGRES_PASSWORD=lostcity
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - lostcity-network
+
+networks:
+  lostcity-network:
+    driver: bridge
+
+volumes:
+  postgres_data: 
