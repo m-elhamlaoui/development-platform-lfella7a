@@ -1,0 +1,41 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "copy-maplibre-css": "if not exist public\\css mkdir public\\css && copy node_modules\\maplibre-gl\\dist\\maplibre-gl.css public\\css\\"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.0",
+    "@mui/styled-engine-sc": "^7.1.0",
+    "@mui/x-date-pickers-pro": "^8.3.1",
+    "@types/leaflet": "^1.9.17",
+    "date-fns": "^4.1.0",
+    "leaflet": "^1.9.4",
+    "maplibre-gl": "^4.7.1",
+    "next": "^15.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.4.1",
+    "react-leaflet": "^5.0.0",
+    "react-map-gl": "^7.1.7",
+    "styled-components": "^6.1.18"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^15.3.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.3.3"
+  }
+}

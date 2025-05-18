@@ -1,0 +1,1 @@
+{"waterCoverage": 39.7, "clearWater": 98.3, "moderateQuality": 1.1, "algalPresence": 0.0, "trueColorAvailable": true, "waterDetectionAvailable": true, "dataSource": "sentinel2", "mlEnhanced": true, "detailedNdwiPath": "water_quality_1747587977656_detailed_ndwi.png", "rgbImagePath": "water_quality_1747587977656_rgb.png"}

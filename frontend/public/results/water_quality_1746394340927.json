@@ -1,0 +1,1 @@
+{"waterCoverage": 42.6, "clearWater": 89.3, "moderateQuality": 9.9, "algalPresence": 100.0, "trueColorAvailable": true, "waterDetectionAvailable": true, "dataSource": "landsat8_l1", "detailedNdwiPath": "water_quality_1746394340927_detailed_ndwi.png", "rgbImagePath": "water_quality_1746394340927_rgb.png"}
