@@ -1,0 +1,12 @@
+com\auth\backend\service\AuthService.class
+com\auth\backend\dto\SignupRequest.class
+com\auth\backend\filter\CORSFilter.class
+com\auth\backend\repository\UserRepository.class
+com\auth\backend\security\PasswordHashProducer$1.class
+com\auth\backend\controller\AuthController.class
+com\auth\backend\JAXRSApplication.class
+com\auth\backend\dto\AuthResponse.class
+com\auth\backend\entity\User.class
+com\auth\backend\dto\SigninRequest.class
+com\auth\backend\security\JwtUtils.class
+com\auth\backend\security\PasswordHashProducer.class

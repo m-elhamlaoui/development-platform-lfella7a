@@ -1,0 +1,5 @@
+# Add PostgreSQL driver
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-class-name=org.postgresql.Driver)
+
+# Add PostgreSQL datasource
+/subsystem=datasources/data-source=AuthDS:add(jndi-name=java:/jdbc/AuthDB,driver-name=postgresql,connection-url=jdbc:postgresql://localhost:5432/authdb,user-name=postgres,password=postgres,min-pool-size=5,max-pool-size=20,enabled=true) 
