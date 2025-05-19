@@ -67,7 +67,7 @@ Each script runs independently, and results are visualized in their dedicated ta
 - Outputs stored or streamed to the frontend via endpoints  
 
 See [`backend/README.md`](backend/README.md) for deeper backend implementation.
-
+c
 ---
 
 ## Frontend (Next.js)
