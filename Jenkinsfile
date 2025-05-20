@@ -1,35 +1,46 @@
 pipeline {
     agent any
-
-    environment {
-        WILDFLY_HOME = '/path/to/your/wildfly'
-        MAVEN_HOME = '/usr/share/maven'
-        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
-    }
-
+    
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'water_watch', url: 'https://github.com/m-elhamlaoui/development-platform-lfella7a.git'
+                git branch: 'main', // Changed from 'master' to 'main'
+                    credentialsId: 'water_watch',
+                    url: 'https://github.com/m-elhamlaoui/development-platform-lfella7a.git'
             }
         }
-
+        
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                // Your build steps here
+                echo 'Building the application...'
+                // Add actual build commands for your project
             }
         }
-
+        
         stage('Deploy') {
             steps {
-                sh 'cp target/auth-backend.war $WILDFLY_HOME/standalone/deployments/'
+                // Your deployment steps here
+                echo 'Deploying the application...'
+                // Add actual deployment commands
             }
         }
-
+        
         stage('Restart WildFly') {
             steps {
-                sh '$WILDFLY_HOME/bin/jboss-cli.sh --connect --command=":reload"'
+                // Steps to restart WildFly
+                echo 'Restarting WildFly server...'
+                // Add actual WildFly restart commands
             }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline execution failed.'
         }
     }
 }
