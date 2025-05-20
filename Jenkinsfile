@@ -25,21 +25,20 @@ pipeline {
         }
         
         stage('Setup Backend') {
-            node{
                 steps {
                 // Check if WildFly is already set up
                 script {
                     def wildflyExists = fileExists("${WILDFLY_DIR}/bin/standalone.sh")
                     if (!wildflyExists) {
                         // Run the setup script if WildFly doesn't exist
-                        sh './setup-backend.bat'
+                        node{
+                            sh './setup-backend.bat'
+                        }
                     } else {
                         echo "WildFly is already set up. Skipping setup."
                     }
                 }
             }
-            }
-        
         }
         
         stage('Build') {
