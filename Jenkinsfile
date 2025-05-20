@@ -70,60 +70,34 @@ pipeline {
                 sh 'curl -s http://localhost:28081/auth-backend | grep "Jakarta EE Authentication Backend" || echo "Application not responding"'
                 
                 // Verify database connection
-                scriptpipeline {
-    agent any
-    
-    environment {
-        WILDFLY_HOME = '/path/to/wildfly/wildfly-36.0.0.Final' // Update this path
-        PORT_OFFSET = '20000' // Using port offset as mentioned in your guide
-    }
-    
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', // Changed from 'master' to 'main'
-                    credentialsId: 'water_watch',
-                    url: 'https://github.com/m-elhamlaoui/development-platform-lfella7a.git'
-            }
-        }
-        
-        stage('Build') {
-            steps {
-                // Maven build as described in your guide
-                sh 'mvn clean package'
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                // Deploy to WildFly using Maven plugin
-                sh 'mvn wildfly:deploy'
-                
-                // Alternative: Manual deployment
-                // sh "cp target/auth-backend.war ${WILDFLY_HOME}/standalone/deployments/"
-            }
-        }
-        
-        stage('Restart WildFly') {
-            steps {
-                // Stop WildFly if running
-                sh "if pgrep -f 'java.*jboss'; then ${WILDFLY_HOME}/bin/jboss-cli.sh --connect command=:shutdown; fi"
-                
-                // Start WildFly with port offset
-                sh "${WILDFLY_HOME}/bin/standalone.sh -Djboss.socket.binding.port-offset=${PORT_OFFSET} &"
-                
-                // Wait for WildFly to start
-                sh 'sleep 30'
-                
-                // Verify deployment
-                sh "curl -s http://localhost:28081/auth-backend | grep 'Jakarta EE Authentication Backend'"
-            }
-        }
-        
-        stage('Database Verification') {
-            steps {
-                // Verify database connection
-                sh "psql -U postgres -d authdb -c 'SELECT COUNT(*) FROM users;'"
+                script {
+                    // Using the PostgreSQL JDBC driver for a simple connection test
+                    sh """
+                    echo "
+                    import java.sql.Connection;
+                    import java.sql.DriverManager;
+                    
+                    public class DBTest {
+                        public static void main(String[] args) {
+                            try {
+                                Connection conn = DriverManager.getConnection(
+                                    \"jdbc:postgresql://${DB_HOST}:5432/${DB_NAME}\", 
+                                    \"${DB_USER}\", 
+                                    \"${DB_PASS}\"
+                                );
+                                System.out.println(\"Database connection successful\");
+                                conn.close();
+                            } catch (Exception e) {
+                                System.out.println(\"Database connection failed: \" + e.getMessage());
+                                System.exit(1);
+                            }
+                        }
+                    }
+                    " > DBTest.java
+                    javac -cp backend/lib/postgresql-42.6.0.jar DBTest.java
+                    java -cp .:backend/lib/postgresql-42.6.0.jar DBTest
+                    """
+                }
             }
         }
     }
@@ -136,6 +110,13 @@ pipeline {
         failure {
             echo 'Pipeline execution failed.'
             echo 'Check the logs for more information.'
+            
+            // Try to collect logs for debugging
+            sh "if [ -f ${WILDFLY_DIR}/standalone/log/server.log ]; then tail -n 100 ${WILDFLY_DIR}/standalone/log/server.log; fi || true"
+        }
+        always {
+            // Clean up temporary files
+            sh 'rm -f DBTest.java DBTest.class || true'
         }
     }
 }
