@@ -25,7 +25,8 @@ pipeline {
         }
         
         stage('Setup Backend') {
-            steps {
+            node{
+                steps {
                 // Check if WildFly is already set up
                 script {
                     def wildflyExists = fileExists("${WILDFLY_DIR}/bin/standalone.sh")
@@ -37,6 +38,8 @@ pipeline {
                     }
                 }
             }
+            }
+        
         }
         
         stage('Build') {
