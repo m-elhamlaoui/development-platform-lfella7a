@@ -1,31 +1,24 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = '/opt/maven'          // Adjust if your Maven is installed elsewhere
-        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64' // Adjust for JDK 17
-        PATH = "${MAVEN_HOME}/bin:${JAVA_HOME}/bin:$PATH"
-    }
-
     tools {
-        maven 'Maven 3.8'   // Ensure Jenkins has this tool configured in Global Tools
-        jdk 'JDK 17'        // Also configure JDK 17 in Jenkins
+        maven 'Maven 3.8'   // Make sure this matches what you configured in Jenkins Global Tools
+        jdk 'JDK 17'
     }
 
-    options {
-        skipStagesAfterUnstable()
+    environment {
+        WILDFLY_CLI = '/opt/wildfly/bin/jboss-cli.sh'  // Adjust this path if needed
     }
 
     stages {
-
-        stage('Clone Repository') {
+        stage('Clone') {
             steps {
                 git branch: 'main',
                     url: 'git@github.com:m-elhamlaoui/development-platform-lfella7a.git'
             }
         }
 
-        stage('Build WAR') {
+        stage('Build') {
             steps {
                 dir('backend') {
                     sh 'mvn clean package'
@@ -33,15 +26,10 @@ pipeline {
             }
         }
 
-        stage('Deploy to WildFly') {
+        stage('Deploy') {
             steps {
-                script {
-                    // Make sure WildFly is already running and management user is configured
-                    def wildfly_cli = '/opt/wildfly/bin/jboss-cli.sh' // adjust as needed
-
-                    sh """
-                        ${wildfly_cli} --connect --command="deploy backend/target/auth-backend.war --force"
-                    """
+                dir('backend') {
+                    sh '${WILDFLY_CLI} --connect --command="deploy target/auth-backend.war --force"'
                 }
             }
         }
@@ -49,10 +37,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Deployment succeeded!'
+            echo '✅ Build and deployment completed successfully.'
         }
         failure {
-            echo '❌ Deployment failed. Check logs.'
+            echo '❌ Build or deployment failed. Check the console output.'
         }
     }
 }
