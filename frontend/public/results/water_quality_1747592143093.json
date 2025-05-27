@@ -1,0 +1,1 @@
+{"waterCoverage": 0, "clearWater": 0, "moderateQuality": 0, "algalPresence": 0, "error": "ML-based water detection failed: cannot access local variable 'training_data' where it is not associated with a value"}

@@ -1,0 +1,11 @@
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/dto/AuthResponse.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/JAXRSApplication.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/security/JwtUtils.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/security/PasswordHashProducer.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/dto/SignupRequest.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/service/AuthService.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/dto/SigninRequest.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/entity/User.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/controller/AuthController.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/repository/UserRepository.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/filter/CORSFilter.java

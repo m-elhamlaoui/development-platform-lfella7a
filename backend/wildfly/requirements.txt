@@ -1,0 +1,73 @@
+# WildFly Server Setup Guide
+
+## Prerequisites
+- Java JDK 17 or higher
+- Maven 3.8 or higher
+- PostgreSQL 14 or higher
+
+## WildFly Installation
+
+1. Download WildFly 36.0.0.Final from the official website:
+   https://www.wildfly.org/downloads/
+   
+2. Extract the downloaded archive to `backend/wildfly/wildfly-36.0.0.Final`
+
+3. The directory structure should look like:
+   ```
+   backend/
+     wildfly/
+       wildfly-36.0.0.Final/
+         bin/
+         docs/
+         modules/
+         ...
+   ```
+
+## Setting Up the Backend
+
+1. Run the provided setup script from the project root:
+   ```
+   ./setup-backend.bat
+   ```
+   
+   This script will:
+   - Set up PostgreSQL database
+   - Configure WildFly
+   - Start WildFly server
+   - Configure the datasource
+
+2. Once setup is complete, you can deploy the application:
+   ```
+   ./deploy-backend.bat
+   ```
+
+## Manual Setup
+
+If you prefer to run the steps manually:
+
+1. Navigate to the backend directory:
+   ```
+   cd backend
+   ```
+
+2. Run the manual setup script:
+   ```
+   scripts\setup.bat
+   ```
+
+3. Deploy the application:
+   ```
+   scripts\deploy.bat
+   ```
+
+## Backend Dependencies
+- Jakarta EE 10.0.0
+- MicroProfile 6.0
+- PostgreSQL JDBC Driver 42.6.0
+- Hibernate ORM 6.2.7.Final
+- JWT Libraries 0.11.5
+- HikariCP 5.0.1
+
+## Accessing the Application
+Once deployed, the application will be available at:
+http://localhost:28081/auth-backend 

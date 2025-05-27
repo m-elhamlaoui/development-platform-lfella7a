@@ -1,0 +1,5 @@
+pandas>=1.5.0
+sentinelhub>=3.8.0
+loguru>=0.7.0
+python-dotenv>=1.0.0
+cyfi>=1.0.0  # Replace with actual version when available 

@@ -1,0 +1,5 @@
+Error generating water quality visualization: Failed to download from:
+https://services.sentinel-hub.com/api/v1/process
+with HTTPError:
+400 Client Error: Bad Request for url: https://services.sentinel-hub.com/api/v1/process
+Server response: "{"status": 400, "reason": "Bad Request", "message": "Invalid request", "code": "COMMON_BAD_PAYLOAD", "errors": [{"parameter": "output->width", "invalidValue": 28332, "violation": "must be less than or equal to 2500", "description": "The request image width. Must be an integer between 1 and 2500. <br />*Only one pair of parameters \"width\"/\"height\" or \"resx\"/\"resy\" must be set at the same time.*"}, {"parameter": "output->height", "invalidValue": 16556, "violation": "must be less than or equal to 2500", "description": "The request image height. Must be an integer between 1 and 2500. <br />*Only one pair of parameters \"width\"/\"height\" or \"resx\"/\"resy\" must be set at the same time.*"}]}"
