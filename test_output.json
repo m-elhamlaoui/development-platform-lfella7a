@@ -1,0 +1,1 @@
+{"ndwi_analysis": {"waterCoverage": 39.7, "clearWater": 98.3, "moderateQuality": 1.1, "algalPresence": 0.0}, "ml_analysis": null, "trueColorAvailable": true, "waterDetectionAvailable": true, "dataSource": "sentinel2", "mlAnalysisAvailable": false, "detailedNdwiPath": "test_output_detailed_ndwi.png", "rgbImagePath": "test_output_rgb.png"}

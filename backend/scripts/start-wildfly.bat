@@ -1,6 +1,6 @@
 @echo off
 echo Starting WildFly with port offset 20000...
-echo HTTP port: 28081
+echo HTTP port: 28080
 echo Management port: 29990
 
 REM Define correct path to WildFly
@@ -21,6 +21,6 @@ popd
 
 echo WildFly starting...
 echo Admin console: http://localhost:29990
-echo Application: http://localhost:28081/auth-backend
+echo Application: http://localhost:28080/auth-backend
 
 cd ..\..\.. 

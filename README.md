@@ -67,7 +67,7 @@ Each script runs independently, and results are visualized in their dedicated ta
 - Outputs stored or streamed to the frontend via endpoints  
 
 See [`backend/README.md`](backend/README.md) for deeper backend implementation.
-
+c
 ---
 
 ## Frontend (Next.js)
@@ -140,5 +140,5 @@ See [`INTEGRATION.md`](INTEGRATION.md) for details on:
 ## Access Points
 
 - **Frontend UI**: [http://localhost:3000](http://localhost:3000)  
-- **Backend API**: [http://localhost:28081/auth-backend](http://localhost:28081/auth-backend)  
+- **Backend API**: [http://localhost:28080/auth-backend](http://localhost:28080/auth-backend)  
 - **WildFly Admin Console**: [http://localhost:29990](http://localhost:29990)  
