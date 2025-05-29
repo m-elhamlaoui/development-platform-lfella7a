@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 F:\githubhub\hamlaoui_lostcityApp\backend\src\main\java\com\auth\backend\dto\AuthResponse.java
 F:\githubhub\hamlaoui_lostcityApp\backend\src\main\java\com\auth\backend\controller\AuthController.java
 F:\githubhub\hamlaoui_lostcityApp\backend\src\main\java\com\auth\backend\repository\UserRepository.java
@@ -9,3 +10,16 @@ F:\githubhub\hamlaoui_lostcityApp\backend\src\main\java\com\auth\backend\securit
 F:\githubhub\hamlaoui_lostcityApp\backend\src\main\java\com\auth\backend\entity\User.java
 F:\githubhub\hamlaoui_lostcityApp\backend\src\main\java\com\auth\backend\dto\SignupRequest.java
 F:\githubhub\hamlaoui_lostcityApp\backend\src\main\java\com\auth\backend\service\AuthService.java
+=======
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/dto/AuthResponse.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/JAXRSApplication.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/security/JwtUtils.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/security/PasswordHashProducer.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/dto/SignupRequest.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/service/AuthService.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/dto/SigninRequest.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/entity/User.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/controller/AuthController.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/repository/UserRepository.java
+/workspaces/development-platform-lfella7a/backend/src/main/java/com/auth/backend/filter/CORSFilter.java
+>>>>>>> 96b75a323ef6a4d28cc6a7ae73447c4534c77dda
