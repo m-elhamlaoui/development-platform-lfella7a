@@ -1,3 +1,5 @@
+https://github.com/ettomarett/hamlaoui-devops
+
 # WaterWatch Project
 
 This repository contains the **WaterWatch Project**, a satellite-driven platform for **assessing water quality** and **detecting algal blooms** using AI models and Sentinel Hub satellite imagery.
